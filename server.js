@@ -14,6 +14,32 @@ server.get('/', (req, res, next) => {
       <p>World</p>
       `);
   });
+//==========================================================================================
+//==========================================================================================
+
+//------------GET METHOD FOR USER----------------
+server.get("/api/users",(req,res)=>{
+  user.get()
+  .then(response=>{
+    res.status(200).json(response)
+  })
+  .catch()
+})
+
+//------------GET METHOD FOR USER----------------
+
+//------------GET METHOD FOR USER----------------
+
+//------------GET METHOD FOR USER----------------
+
+//------------GET METHOD FOR USER----------------
+
+//------------GET METHOD FOR USER----------------
+
+
+
+//==========================================================================================
+//==========================================================================================
 
 //------------GET METHOD FOR POST----------------
 server.get("/api/posts",(req,res)=>{
@@ -62,7 +88,17 @@ server.delete("/api/posts/:id",(req,res)=>{
   
 })
 //------------PUT METHOD FOR POST----------------
-
+server.put("/api/posts/:id",(req,res)=>{
+  const postId = req.params.id;
+  const postText = req.body;
+  post.update(postId,postText)
+  .then(response=>{
+    res.status(200).json(response)
+  })
+  .catch(err=>{
+    res.status(400).json({error: "cannot PUT data"})
+  })
+})
 
 module.exports = server;
 
