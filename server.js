@@ -23,18 +23,29 @@ server.get("/api/users",(req,res)=>{
   .then(response=>{
     res.status(200).json(response)
   })
-  .catch()
+  .catch(err=>{
+    res.status(400).json({error:"cannot GET data"})
+  })
 })
 
 //------------GET METHOD FOR USER----------------
-
+server.get("/api/users/:id",(req,res)=>{
+  const userId = req.params.id;
+  user.getById(userId)
+  .then(response=>{
+    res.status(200).json(response)
+  })
+  .catch(err=>{
+    res.status(400).json({error:"cannot GET id data"})
+  })
+})
 //------------GET METHOD FOR USER----------------
 
-//------------GET METHOD FOR USER----------------
+//------------POST METHOD FOR USER----------------
 
-//------------GET METHOD FOR USER----------------
+//------------DELETE METHOD FOR USER----------------
 
-//------------GET METHOD FOR USER----------------
+//------------PUT METHOD FOR USER----------------
 
 
 
