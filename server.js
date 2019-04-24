@@ -115,10 +115,6 @@ server.get("/api/posts/:id",(req,res)=>{
 
 
 //------------POST METHOD FOR POST----------------
-
-
-
-
 server.post("/api/posts",(req,res)=>{
   const newPost = req.body;
   console.log(newPost)
@@ -131,12 +127,6 @@ server.post("/api/posts",(req,res)=>{
     res.status(400).json({error: "cannot POST data"})
   })
 })
-
-
-
-
-
-
 //------------DELETE METHOD FOR POST----------------
 server.delete("/api/posts/:id",(req,res)=>{
   const postId = req.params.id;
@@ -154,7 +144,8 @@ server.delete("/api/posts/:id",(req,res)=>{
 //------------PUT METHOD FOR POST----------------
 server.put("/api/posts/:id",(req,res)=>{
   const newPost = req.body;
-  post.update(newPost)
+  const postId = req.params.id;
+  post.update(postId,newPost)
   .then(response=>{
     res.status(200).json(response)
   })
