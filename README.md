@@ -11,7 +11,9 @@ You are allowed, and **encouraged**, to collaborate with other peers. Please fol
 ## Project Set Up
 
 - [ ] Create a forked copy of this project.
+DONE
 - [ ] Add your project manager as collaborator on Github.
+DONE
 - [ ] Clone your OWN version of the repository.
 - [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
