@@ -7,6 +7,7 @@ const user = require("./data/helpers/userDb");
 
 const server = express();
 server.use(helmet());
+server.use(express.json())
 
 server.get('/', (req, res, next) => {
     res.send(`
@@ -24,14 +25,14 @@ server.get("/api/users",(req,res)=>{
     res.status(200).json(response)
   })
   .catch(err=>{
-    res.status(400).json({error:"cannot GET data"})
+    res.status(500).json({error:"cannot GET data"})
   })
 })
 
 //------------GET METHOD FOR USER----------------
 server.get("/api/users/:id",(req,res)=>{
-  const userId = req.params.id;
-  user.getById(userId)
+  const { id }= req.params;
+  user.getById(id)
   .then(response=>{
     res.status(200).json(response)
   })
@@ -100,8 +101,8 @@ server.get("/api/posts",(req,res)=>{
 })
 //------------GET id METHOD FOR POST----------------
 server.get("/api/posts/:id",(req,res)=>{
-    const postId = req.params.id;
-  post.getById(postId)
+    const {id} = req.params;
+  post.getById({id})
   .then(posts=>{
     res.status(200).json(posts)
   })
@@ -109,10 +110,20 @@ server.get("/api/posts/:id",(req,res)=>{
     err.status(400).json({error: "cannot GET id data"})
   })
 })
+
+
+
+
 //------------POST METHOD FOR POST----------------
+
+
+
+
 server.post("/api/posts",(req,res)=>{
-      const newPost = req.body;
+  const newPost = req.body;
+  console.log(newPost)
   post.insert(newPost)
+
   .then(response=>{
     res.json(response)
   })
@@ -120,6 +131,12 @@ server.post("/api/posts",(req,res)=>{
     res.status(400).json({error: "cannot POST data"})
   })
 })
+
+
+
+
+
+
 //------------DELETE METHOD FOR POST----------------
 server.delete("/api/posts/:id",(req,res)=>{
   const postId = req.params.id;
@@ -136,9 +153,8 @@ server.delete("/api/posts/:id",(req,res)=>{
 })
 //------------PUT METHOD FOR POST----------------
 server.put("/api/posts/:id",(req,res)=>{
-  const postId = req.params.id;
-  const postText = req.body;
-  post.update(postId,postText)
+  const newPost = req.body;
+  post.update(newPost)
   .then(response=>{
     res.status(200).json(response)
   })
