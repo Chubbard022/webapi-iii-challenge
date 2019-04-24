@@ -15,8 +15,8 @@ server.get('/', (req, res, next) => {
       `);
   });
 
-//------------GET METHOD POST----------------
-server.get("/posts",(req,res)=>{
+//------------GET METHOD FOR POST----------------
+server.get("/api/posts",(req,res)=>{
   post.get()
   .then(posts=>{
     res.status(200).json(posts)
@@ -25,8 +25,8 @@ server.get("/posts",(req,res)=>{
     res.status(400).json({error: "cannot GET data"})
   })
 })
-//------------GET METHOD POST----------------
-server.get("/posts/:id",(req,res)=>{
+//------------GET id METHOD FOR POST----------------
+server.get("/api/posts/:id",(req,res)=>{
     const postId = req.params.id;
   post.getById(postId)
   .then(posts=>{
@@ -36,6 +36,32 @@ server.get("/posts/:id",(req,res)=>{
     err.status(400).json({error: "cannot GET id data"})
   })
 })
+//------------POST METHOD FOR POST----------------
+server.post("/api/posts",(req,res)=>{
+      const newPost = req.body;
+  post.insert(newPost)
+  .then(response=>{
+    res.json(response)
+  })
+  .catch(err=>{
+    res.status(400).json({error: "cannot POST data"})
+  })
+})
+//------------DELETE METHOD FOR POST----------------
+server.delete("/api/posts/:id",(req,res)=>{
+  const postId = req.params.id;
+  const postText = req.body;
+
+  post.remove(postId,postText)
+  .then(response=>{
+    res.status(204).json(response)
+  })
+  .catch(err=>{
+    res.status(400).json({error:"cannot DELETE data" })
+  })
+  
+})
+//------------PUT METHOD FOR POST----------------
 
 
 module.exports = server;
