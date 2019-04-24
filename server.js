@@ -40,13 +40,49 @@ server.get("/api/users/:id",(req,res)=>{
   })
 })
 //------------GET METHOD FOR USER----------------
-
+server.get("/api/users/:id/posts",(req,res)=>{
+  user.getUserPosts()
+  .then(response=>{
+    res.status(200).json(response)
+  })
+  .catch(err=>{
+    res.status(400).json({error: "cannot GET user id posts data"})
+  })
+})
 //------------POST METHOD FOR USER----------------
-
+server.post("/api/users",(req,res)=>{
+    const newUser = req.body;
+  user.insert(newUser)
+  .catch(response=>{
+    res.status(201).json(response)
+  })
+  .then(err=>{
+    res.status(400).json({error: "cannot POST user data"})
+  })
+})
 //------------DELETE METHOD FOR USER----------------
-
+server.delete("/api/users/:id",(req,res)=>{
+  const userId = req.params.id;
+  user.remove(userId)
+  .then(response=>{
+    res.status(201).json(response)
+  })
+  .catch(err=>{
+    res.status(400).json({error: "cannot DELETE user data"})
+  })
+})
 //------------PUT METHOD FOR USER----------------
-
+server.put("/api/users/:id",(req,res)=>{
+  const userId = req.params.id;
+  const userName = req.body;
+  user.update(userId,userName)
+  .then(response=>{
+    res.status(200).json(response)
+  })
+  .catch(err=>{
+    res.status(400).json({error: "cannot PUT data"})
+  })
+})
 
 
 //==========================================================================================
