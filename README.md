@@ -11,18 +11,28 @@ You are allowed, and **encouraged**, to collaborate with other peers. Please fol
 ## Project Set Up
 
 - [ ] Create a forked copy of this project.
+DONE
 - [ ] Add your project manager as collaborator on Github.
+DONE
 - [ ] Clone your OWN version of the repository.
+DONE
 - [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
+DONE
 - [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
+DONE
 - [ ] Push commits: git push origin `<firstName-lastName>`.
+DONE
 
 Follow these steps for completing your project.
 
 - [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repository). **Please don't merge your own pull request**
+DONE
 - [ ] Add your project manager as a reviewer on the pull-request
+DONE
 - [ ] Your project manager will count the project as complete by merging the branch back into master.
+DONE
 - [ ] Do your magic!
+DONE
 
 ## Minimum Viable Product
 
